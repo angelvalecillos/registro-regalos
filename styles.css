@@ -98,4 +98,36 @@ li.comprado .regalo-info strong {
 }
 
 #qr-caja { text-align: center; }
+
+.qr-fila {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.compartir {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 150px;
+}
+
+.boton-compartir {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.whatsapp { background: #25d366; }
+.telegram { background: #229ed9; }
+.facebook { background: #1877f2; }
+.correo { background: #6b7280; }
+.otras { background: #6d28d9; }
 #qr-caja input { text-align: center; }

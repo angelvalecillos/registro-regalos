@@ -246,7 +246,26 @@ function actualizarQR() {
   $("enlace-publico").value = enlacePublico;
   $("qr").src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
     encodeURIComponent(enlacePublico);
+
+  const mensaje = "¡Mira mi lista de regalos para mi cumpleaños! 🎁 ";
+  const textoCompleto = encodeURIComponent(mensaje + enlacePublico);
+  $("share-whatsapp").href = "https://wa.me/?text=" + textoCompleto;
+  $("share-telegram").href = "https://t.me/share/url?url=" + encodeURIComponent(enlacePublico) +
+    "&text=" + encodeURIComponent(mensaje);
+  $("share-facebook").href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(enlacePublico);
+  $("share-correo").href = "mailto:?subject=" + encodeURIComponent("Mi lista de regalos") + "&body=" + textoCompleto;
+
+  // El menú de compartir del sistema solo existe en algunos navegadores (sobre todo móviles)
+  $("btn-compartir").hidden = !navigator.share;
 }
+
+$("btn-compartir").addEventListener("click", function () {
+  navigator.share({
+    title: "Mi lista de regalos",
+    text: "¡Mira mi lista de regalos para mi cumpleaños! 🎁",
+    url: $("enlace-publico").value
+  }).catch(function () {});
+});
 
 $("btn-copiar").addEventListener("click", function () {
   $("enlace-publico").select();

@@ -95,7 +95,16 @@
 
     <section id="qr-caja" hidden>
       <h2>Código QR para los invitados</h2>
-      <img id="qr" alt="Código QR de la lista pública" width="200" height="200">
+      <div class="qr-fila">
+        <img id="qr" alt="Código QR de la lista pública" width="200" height="200">
+        <div class="compartir">
+          <a id="share-whatsapp" class="boton-compartir whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+          <a id="share-telegram" class="boton-compartir telegram" target="_blank" rel="noopener">Telegram</a>
+          <a id="share-facebook" class="boton-compartir facebook" target="_blank" rel="noopener">Facebook</a>
+          <a id="share-correo" class="boton-compartir correo" target="_blank" rel="noopener">Correo</a>
+          <button id="btn-compartir" class="boton-compartir otras" hidden>Otras apps…</button>
+        </div>
+      </div>
       <p><input type="text" id="enlace-publico" readonly></p>
       <button id="btn-copiar">Copiar enlace</button>
     </section>
