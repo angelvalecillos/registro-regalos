@@ -8,7 +8,6 @@ import {
   deleteDoc, onSnapshot, query, orderBy, writeBatch
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { firebaseConfig } from "./firebase-config.js";
-import { crearDatosPrueba } from "./datos-prueba.js";
 
 // Cada regalo: titulo, enlace, imagen, compradoUid (quién lo compró) y compradoPor (nombre)
 const MAX_REGALOS = 20;
@@ -35,7 +34,7 @@ let miUid = null;          // uid del cumpleañero (dueño de la lista)
 let regalos = [];
 let editandoId = null;
 let dejarDeEscuchar = null;
-let ocupado = false;       // evita reaccionar al login mientras se registra o se crean datos de prueba
+let ocupado = false;       // evita reaccionar al login mientras se registra
 
 let nombreInvitado = null;
 let uidInvitado = null;
@@ -322,19 +321,6 @@ $("form-login").addEventListener("submit", async function (e) {
 
 $("btn-salir").addEventListener("click", function () {
   signOut(auth);
-});
-
-$("btn-prueba").addEventListener("click", async function () {
-  if (!confirm("Se crearán las cuentas ana, carlos y lucia con 10 regalos cada una. ¿Continuar?")) return;
-  ocupado = true;
-  try {
-    const resumen = await crearDatosPrueba(auth, db);
-    alert("Listo:\n" + resumen.join("\n"));
-  } catch (err) {
-    alert(mensajeError(err));
-  }
-  ocupado = false;
-  irALogin();
 });
 
 async function abrirPanel(usuario) {
