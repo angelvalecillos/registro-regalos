@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro de regalos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>🎁 Registro de regalos</h1>
+    <p id="subtitulo">Cargando...</p>
+    <button id="btn-salir" class="secundario" hidden>Cerrar sesión</button>
+  </header>
+
+  <main>
+    <!-- Registro del cumpleañero -->
+    <section id="pantalla-registro" hidden>
+      <h2>Registro del cumpleañero</h2>
+      <form id="form-registro">
+        <label>Usuario (letras minúsculas, números, . _ -)
+          <input type="text" id="reg-usuario" maxlength="20" pattern="[a-z0-9._\-]+" required>
+        </label>
+        <label>Tu nombre
+          <input type="text" id="reg-nombre" maxlength="40" required>
+        </label>
+        <label>Fecha de tu cumpleaños
+          <input type="date" id="reg-fecha" required>
+        </label>
+        <label>Contraseña (mínimo 6 caracteres)
+          <input type="password" id="reg-clave" minlength="6" required>
+        </label>
+        <button type="submit">Crear cuenta</button>
+      </form>
+      <p><button type="button" id="ir-login" class="secundario">Ya tengo cuenta</button></p>
+    </section>
+
+    <!-- Inicio de sesión del cumpleañero -->
+    <section id="pantalla-login" hidden>
+      <h2>Iniciar sesión</h2>
+      <form id="form-login">
+        <label>Usuario
+          <input type="text" id="login-usuario" required>
+        </label>
+        <label>Contraseña
+          <input type="password" id="login-clave" required>
+        </label>
+        <button type="submit">Entrar</button>
+      </form>
+      <p><button type="button" id="ir-registro" class="secundario">Crear cuenta nueva</button></p>
+      <p><button type="button" id="btn-prueba" class="secundario">Crear datos de prueba (ana, carlos, lucia)</button></p>
+    </section>
+
+    <!-- Entrada del invitado -->
+    <section id="pantalla-invitado" hidden>
+      <h2>¡Bienvenido!</h2>
+      <p id="invitado-texto"></p>
+      <form id="form-invitado">
+        <label>Tu nombre
+          <input type="text" id="inv-nombre" maxlength="40" required>
+        </label>
+        <button type="submit">Entrar</button>
+      </form>
+      <p><button id="btn-incognito" class="secundario">Entrar como incógnito</button></p>
+    </section>
+
+    <!-- Panel del cumpleañero -->
+    <section id="formulario-caja" hidden>
+      <h2 id="form-titulo">Agregar regalo</h2>
+      <form id="formulario">
+        <label>Título
+          <input type="text" id="titulo" maxlength="60" required>
+        </label>
+        <label>Enlace de la tienda
+          <input type="url" id="enlace" placeholder="https://..." required>
+        </label>
+        <label>Enlace de la imagen (opcional)
+          <input type="url" id="imagen" placeholder="https://.../foto.jpg">
+        </label>
+        <img id="vista-previa" class="miniatura" alt="Vista previa" hidden>
+        <div class="botones">
+          <button type="submit" id="btn-guardar">Agregar</button>
+          <button type="button" id="btn-cancelar" class="secundario" hidden>Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Lista (la ven el cumpleañero y el invitado) -->
+    <section id="lista-caja" hidden>
+      <h2>Lista de regalos</h2>
+      <ul id="lista"></ul>
+      <p id="vacio" hidden>Todavía no hay regalos.</p>
+      <button id="btn-guardar-compras" hidden>Guardar mis regalos</button>
+    </section>
+
+    <section id="qr-caja" hidden>
+      <h2>Código QR para los invitados</h2>
+      <img id="qr" alt="Código QR de la lista pública" width="200" height="200">
+      <p><input type="text" id="enlace-publico" readonly></p>
+      <button id="btn-copiar">Copiar enlace</button>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
